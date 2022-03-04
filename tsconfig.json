@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "module": "esnext",
+    "target": "es2017",
+    "lib": ["ESNext"],
+    "strict": true,  //开启这个之后null就不能赋值给任意类型了
+    "esModuleInterop": true,
+    "moduleResolution": "node",
+    "skipLibCheck": true,
+    "noUnusedLocals": false,
+    "noUnusedParameters": true,
+    "noImplicitReturns": true,
+    "allowJs": true,
+  },
+  "exclude": ["node_modules", "dist" , "src/index.ts"]
+  // "extends": "./tsconfig.base.json",
+}

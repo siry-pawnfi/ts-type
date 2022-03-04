@@ -1,6 +1,8 @@
 type TupleToObject<T extends readonly (number | string | symbol)[]> = {
   [K in T[number]]: K
 }
+
+
 //keyof array ==> 索引
 
 // const tuple = ['tesla', 'model 3', 'model X', 'model Y'] as const

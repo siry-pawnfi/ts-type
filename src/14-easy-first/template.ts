@@ -13,11 +13,11 @@ type First<T extends any[]> = T extends [infer First, ...infer Reset] ? First : 
 
 //js
 
-function getArray0(arr) {
-  if(Array.isArray(arr)){
-    return arr.length > 0 ? arr[0] : 'never'
-  }
-}
+// function getArray0(arr) {
+//   if(Array.isArray(arr)){
+//     return arr.length > 0 ? arr[0] : 'never'
+//   }
+// }
 
 // 1.是数组
 // 2.有arr[0] 返回arr[0] 没有返回never

@@ -161,3 +161,113 @@ interface Box1<T> {
 // ReadonlyArray<Type> 提供了更简短的写法 readonly Type[]。
 
 type Either2dOr3d = [number, number, number?];  //源组中的可选属性 写字最后面加?
+
+
+
+/**********************泛型 */
+
+function identity<T>(args: T): T {
+  return args
+}
+
+
+// let myIdentity: <Type>(arg: Type) => Type = identity;
+
+//类对像调用签名方式
+let myIdentity: { <Type>(arg: Type): Type } = identity;
+
+
+// 书写泛型接口来代替上面的 调用签名方式
+interface GenericIdentityFn1 {
+  <T>(args: T): T
+}
+let identity2: GenericIdentityFn1 = identity
+
+//泛型参数作为接口的参数
+interface GenericIdentityFn<T> {
+  (args: T): T
+}
+let identity3: GenericIdentityFn<number> = identity
+
+
+
+//*********************泛型类*********************/
+
+class GenericNumber<NumberType> {
+  zeroValue: NumberType
+  add: (x: NumberType, y: NumberType) => NumberType
+}
+
+let myfenerNumber = new GenericNumber<number>()
+myfenerNumber.zeroValue = 0
+myfenerNumber.add = (x, y) => {
+  return x+y
+}
+
+
+//*********************泛型约束*********************/
+
+
+interface Lengthwise {
+  length:number
+}
+
+function getLength(arr: Lengthwise) {
+
+}
+
+//*********************在泛型约束中使用类型参数*********************/
+
+function getProperty<T, K extends keyof T>(obj: T, key: K){
+  return obj[key]
+}
+
+
+let x = {a:1, b:2, c:3}
+
+getProperty(x, 'a')
+getProperty(x, 'm')
+
+//*********************在泛型中使用类类型*********************/
+function create<T>(c: {new (): T}): T{
+  return new c()
+}
+
+//复杂🌰
+class BeeKeeper {
+  hasMask: boolean = true;
+}
+ 
+class ZooKeeper {
+  nametag: string = "Mikle";
+}
+ 
+class Animal {
+  numLegs: number = 4;
+}
+ 
+class Bee extends Animal {
+  keeper: BeeKeeper = new BeeKeeper();
+}
+ 
+class Lion extends Animal {
+  keeper: ZooKeeper = new ZooKeeper();
+}
+ 
+function createInstance<A extends Animal>(c: new () => A): A {
+  return new c();
+}
+ 
+createInstance(Lion).keeper.nametag;
+createInstance(Bee).keeper.hasMask;
+
+
+//*********************在泛型中使用类类型*********************/
+
+
+
+
+
+
+
+

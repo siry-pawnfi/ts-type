@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,33 +8,77 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>border渐变</title>
     <style>
-     button{
-        color: #23b7cb;
-        font-size: 15px;
-        padding: 5px 15px;
-        background-color: #fff;
-        background-image:-webkit-linear-gradient(bottom,red,#ff5f60,#f0c41b); 
-        -webkit-background-clip:text; 
-        -webkit-text-fill-color:transparent; 
-        border: 1px transparent solid;
-        border-radius: 30px;
-        position: relative;
+        button {
+            color: #23b7cb;
+            font-size: 15px;
+            padding: 5px 15px;
+            background-color: #fff;
+            background-image: -webkit-linear-gradient(bottom, red, #ff5f60, #f0c41b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            border: 1px transparent solid;
+            border-radius: 30px;
+            position: relative;
 
-     }
-     button:after{
-         content:'';
-         position: absolute;
-        top: -3px; bottom: -3px;
-        left: -3px; right: -3px;
-        background-image: linear-gradient(135deg,#000781, #23b7cb);
-        background-color: red;
-        border-radius: 30px;
-        z-index: -1;
-     }
-      
+        }
+
+        button:after {
+            content: '';
+            position: absolute;
+            top: -3px;
+            bottom: -3px;
+            left: -3px;
+            right: -3px;
+            background-image: linear-gradient(135deg, #000781, #23b7cb);
+            background-color: red;
+            border-radius: 30px;
+            z-index: -1;
+        }
     </style>
 </head>
+
 <body>
     <button>进入平台</button>
+
+    <script>
+
+        let arr = [1, 2, 3, 1, 2, 3]
+
+        const fn = (arr) => {
+            let arrTemp = []
+            let obj = []
+            arr.map(val => {
+              if(val in obj) obj[val] ++
+              obj[val] = 1
+            })
+
+            for(let pro in obj) {
+                if(obj[pro] === 1) arrTemp.push(+pro)
+            }
+            return arrTemp
+        }
+        console.log('--使用计数方式:',fn(arr))
+
+        const fn2 = (arr) => {
+            //TODO 使用下标的方式
+
+            // const arrTemp = []
+            // arr.forEach((val, idx) => {
+            //    if(arr.indexOf(val) === idx) {
+            //        arrTemp.push(val)
+            //    }
+            // })
+        // return arrTemp
+
+
+        //  return arr.filter((val, idx) => arr.indexOf(val) === idx)
+        
+         return arr.filter((val, idx) => arr.findIndex((_, index) => val === _) === idx)
+                //findIndex  功能更强
+        }
+
+        console.log('--下标判断方式:',fn2(arr))
+    </script>
 </body>
+
 </html>

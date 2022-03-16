@@ -21,4 +21,4 @@ type MyExclude<T, U > = T extends U ? never : T
 
 //for in遍历属性   通常用来遍历对象
 
-//for遍历数组的值  通常用来遍历数组
+//for of遍历数组的值  通常用来遍历数组

@@ -3,6 +3,8 @@ type MyPick<T, K extends keyof T> = {
   [P in K]: T[P]
 }
 
+
+//从类型 T 中选择出属性 K，构造成一个新的类型。
 /**
  * 属性K 应该是T中的的属性K extends keyof T
  * 遍历对象,取出T中属性K的值,赋值给 P(遍历K的每一项)

@@ -13,7 +13,7 @@ type MyParameters<T extends (...args: any[]) => any> =
 // function get(callbac,...args){
 //   return callbac(args)
 // }
-
+//asd
 
 // function getType(args){
 //   return [...args]

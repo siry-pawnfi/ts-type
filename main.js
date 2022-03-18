@@ -14,7 +14,7 @@
 // }).then(()=>{
 //   console.log(6)
 // })
-
+// ss
 
 // new Promise((resolve, reject) => {
 //   console.log(1)

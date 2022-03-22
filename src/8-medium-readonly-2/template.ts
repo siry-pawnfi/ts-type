@@ -7,12 +7,13 @@ type Omit2<T, K extends keyof T> = {
   [P in Exclude2<keyof T, K>] : T[P]
 } 
    
-type MyReadonly2<T, K extends keyof T = never> = 
+type MyReadonly2<T, K extends keyof T = keyof T> = 
 {
   readonly [P in K] : T[P]
-} & {
+} &
+{
   [P in keyof Omit<T, K>]: T[P]
-}
+} 
 
 type CCC = MyReadonly2<Todo1>
 interface Todo1 {
@@ -20,6 +21,10 @@ interface Todo1 {
   description?: string
   completed: boolean
 }
+
+type AAb = MyReadonly2<Todo1>
+
+type  DD = keyof Omit<Todo1,never>
 
 
 
@@ -36,9 +41,9 @@ interface Todo1 {
 // K指定应设置为Readonly的T的属性集。如果未提供K，则应使所有属性都变为只读，就像普通的Readonly<T>一样。
 
 //keyof可以把interface转为 union
-//遍历unio使用  in
-//遍历数组 使用 T[number]
-//遍历接口使用 先用keyof将属性转为联合类型,然后再用in遍历联合类型
+//遍历union: 使用  in
+//遍历数组: 使用 T[number]
+//遍历接口: 先用keyof将(interface)属性转为联合类型,然后再用in遍历联合类型
 
 // function setReadly(T, K){
   // let flag = false

@@ -12,7 +12,7 @@
 // }
 // Not<T, keyof Options>
 
-//不适用this进行的改造
+//不使用this进行的改造
 interface Chainable<Options = {}> {
   option<T extends string, U>(key: Exclude<T, keyof Options>, value: U): Chainable<Options & {[S in T] : U}>;
   get(): Options
@@ -24,3 +24,11 @@ interface Chainable<Options = {}> {
  * - this
  * -  Exclude  从联合类型中 排除 部分联合类型
  */
+
+
+// interface A {
+//   name: string,
+//   age:number
+// }
+
+// type CZ = Exclude<keyof A , never>

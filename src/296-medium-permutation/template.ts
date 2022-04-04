@@ -1,9 +1,9 @@
 
-type Permutation<T, U = T> =
+type Permutation<T, K = T> =
   [T] extends [never]
     ? []
     : T extends any
-      ? [T, ...Permutation<Exclude<U,T>>]
+      ? [T, ...Permutation<Exclude<K,T>>]
       : never
 
 //U用来保存T的副本,主要是用来做Exclude操作的
@@ -26,3 +26,9 @@ type Permutation<T, U = T> =
  type ToArray<Type> = Type extends any ? Type[] : never;
  
  type StrArrOrNumArr = ToArray<string | number>;  //string[] | number[]
+
+
+/**
+ * 
+ */
+

@@ -6,7 +6,7 @@ type Foo = {
   age: string
 }
 type Bar = {
-  name: string
+  name: number
   age: string
   gender: number
 }

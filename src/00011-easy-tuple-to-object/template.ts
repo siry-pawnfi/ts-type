@@ -3,6 +3,13 @@ type TupleToObject<T extends readonly (number | string | symbol)[]> = {
 }
 
 
+
+let str = 'ss'
+type s = typeof str  //string
+
+const strConst = 'ccc'
+type sc = typeof strConst  //'ccc'
+
 //keyof array ==> 索引
 
 // const tuple = ['tesla', 'model 3', 'model X', 'model Y'] as const
